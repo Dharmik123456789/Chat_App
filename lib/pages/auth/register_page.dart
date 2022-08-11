@@ -26,7 +26,7 @@ class _RegisterPageState extends State<RegisterPage> {
       body: _isLoading
           ? Center(
               child: CircularProgressIndicator(
-                  color: Theme.of(context).primaryColor))
+                  color: Theme.of(context).primaryColorLight))
           : SingleChildScrollView(
               child: Padding(
                 padding:
@@ -40,17 +40,28 @@ class _RegisterPageState extends State<RegisterPage> {
                         const Text(
                           "Groupie",
                           style: TextStyle(
-                              fontSize: 40, fontWeight: FontWeight.bold),
+                              fontSize: 40,
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold),
                         ),
                         const SizedBox(height: 10),
                         const Text(
                             "Create your account now to chat and explore",
                             style: TextStyle(
-                                fontSize: 15, fontWeight: FontWeight.w400)),
+                                fontSize: 15,
+                                color: Colors.white,
+                                fontWeight: FontWeight.w400)),
                         Image.asset("assets/register.png"),
                         TextFormField(
+                          style: TextStyle(
+                            color: Colors.white,
+                          ),
                           decoration: textInputDecoration.copyWith(
                               labelText: "Full Name",
+                              labelStyle: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                color: Colors.white,
+                              ),
                               prefixIcon: Icon(
                                 Icons.person,
                                 color: Theme.of(context).primaryColor,
@@ -72,8 +83,15 @@ class _RegisterPageState extends State<RegisterPage> {
                           height: 15,
                         ),
                         TextFormField(
+                          style: TextStyle(
+                            color: Colors.white,
+                          ),
                           decoration: textInputDecoration.copyWith(
-                              labelText: "Email",
+                              labelText: "E-mail",
+                              labelStyle: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                color: Colors.white,
+                              ),
                               prefixIcon: Icon(
                                 Icons.email,
                                 color: Theme.of(context).primaryColor,
@@ -95,9 +113,16 @@ class _RegisterPageState extends State<RegisterPage> {
                         ),
                         const SizedBox(height: 15),
                         TextFormField(
+                          style: TextStyle(
+                            color: Colors.white,
+                          ),
                           obscureText: true,
                           decoration: textInputDecoration.copyWith(
                               labelText: "Password",
+                              labelStyle: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                color: Colors.white,
+                              ),
                               prefixIcon: Icon(
                                 Icons.lock,
                                 color: Theme.of(context).primaryColor,
@@ -122,14 +147,16 @@ class _RegisterPageState extends State<RegisterPage> {
                           width: double.infinity,
                           child: ElevatedButton(
                             style: ElevatedButton.styleFrom(
-                                primary: Theme.of(context).primaryColor,
+                                primary: Colors.indigo[400],
                                 elevation: 0,
                                 shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(30))),
                             child: const Text(
                               "Register",
                               style:
-                                  TextStyle(color: Colors.white, fontSize: 16),
+                                  TextStyle(color: Colors.white,
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 16),
                             ),
                             onPressed: () {
                               register();
@@ -142,12 +169,13 @@ class _RegisterPageState extends State<RegisterPage> {
                         Text.rich(TextSpan(
                           text: "Already have an account? ",
                           style: const TextStyle(
-                              color: Colors.black, fontSize: 14),
+                              color: Colors.white, fontSize: 14),
                           children: <TextSpan>[
                             TextSpan(
                                 text: "Login now",
                                 style: const TextStyle(
-                                    color: Colors.black,
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold,
                                     decoration: TextDecoration.underline),
                                 recognizer: TapGestureRecognizer()
                                   ..onTap = () {

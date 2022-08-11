@@ -51,7 +51,7 @@ class _GroupInfoState extends State<GroupInfo> {
       appBar: AppBar(
         centerTitle: true,
         elevation: 0,
-        backgroundColor: Theme.of(context).primaryColor,
+        backgroundColor: Colors.indigo[600],
         title: const Text("Group Info"),
         actions: [
           IconButton(
@@ -61,9 +61,14 @@ class _GroupInfoState extends State<GroupInfo> {
                     context: context,
                     builder: (context) {
                       return AlertDialog(
-                        title: const Text("Exit"),
+                        backgroundColor: Colors.indigo[400],
+                        title: const Text("Exit",style: TextStyle(
+                          fontWeight: FontWeight.bold,color: Colors.white
+                        ),),
                         content:
-                            const Text("Are you sure you exit the group? "),
+                            const Text("Are you sure you exit the group? ",style: TextStyle(
+                              color: Colors.white,
+                            ),),
                         actions: [
                           IconButton(
                             onPressed: () {
@@ -71,7 +76,7 @@ class _GroupInfoState extends State<GroupInfo> {
                             },
                             icon: const Icon(
                               Icons.cancel,
-                              color: Colors.red,
+                              color: Colors.deepOrangeAccent,
                             ),
                           ),
                           IconButton(
@@ -89,7 +94,7 @@ class _GroupInfoState extends State<GroupInfo> {
                             },
                             icon: const Icon(
                               Icons.done,
-                              color: Colors.green,
+                              color: Colors.lightGreen,
                             ),
                           ),
                         ],
@@ -107,17 +112,19 @@ class _GroupInfoState extends State<GroupInfo> {
               padding: const EdgeInsets.all(20),
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(30),
-                  color: Theme.of(context).primaryColor.withOpacity(0.2)),
+                  color: Colors.indigo[400]),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   CircleAvatar(
                     radius: 30,
-                    backgroundColor: Theme.of(context).primaryColor,
+                    backgroundColor:Colors.indigo[300],
                     child: Text(
                       widget.groupName.substring(0, 1).toUpperCase(),
                       style: const TextStyle(
-                          fontWeight: FontWeight.w500, color: Colors.white),
+                          fontWeight: FontWeight.bold,
+                          fontSize: 18,
+                          color: Colors.white),
                     ),
                   ),
                   const SizedBox(
@@ -127,13 +134,16 @@ class _GroupInfoState extends State<GroupInfo> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        "Group: ${widget.groupName}",
-                        style: const TextStyle(fontWeight: FontWeight.w500),
+                        "Group : ${widget.groupName}",
+                        style: const TextStyle(fontWeight: FontWeight.bold,color: Colors.white),
                       ),
                       const SizedBox(
                         height: 5,
                       ),
-                      Text("Admin: ${getName(widget.adminName)}")
+                      Text("Admin : ${getName(widget.adminName)}",style: TextStyle(
+                        fontSize: 15,
+                        color: Colors.white,
+                      ),)
                     ],
                   )
                 ],
@@ -161,16 +171,17 @@ class _GroupInfoState extends State<GroupInfo> {
                     padding:
                         const EdgeInsets.symmetric(horizontal: 5, vertical: 10),
                     child: ListTile(
+                      textColor: Colors.white,
                       leading: CircleAvatar(
                         radius: 30,
-                        backgroundColor: Theme.of(context).primaryColor,
+                        backgroundColor: Colors.indigo[300],
                         child: Text(
                           getName(snapshot.data['members'][index])
                               .substring(0, 1)
                               .toUpperCase(),
                           style: const TextStyle(
                               color: Colors.white,
-                              fontSize: 15,
+                              fontSize: 17,
                               fontWeight: FontWeight.bold),
                         ),
                       ),

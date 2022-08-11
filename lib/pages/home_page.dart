@@ -4,6 +4,7 @@ import 'package:chat_application/pages/profile_page.dart';
 import 'package:chat_application/pages/search_page.dart';
 import 'package:chat_application/service/auth_service.dart';
 import 'package:chat_application/service/database_service.dart';
+import 'package:chat_application/shared/constants.dart';
 import 'package:chat_application/widgets/group_tile.dart';
 import 'package:chat_application/widgets/widgets.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -75,7 +76,7 @@ class _HomePageState extends State<HomePage> {
         ],
         elevation: 0,
         centerTitle: true,
-        backgroundColor: Theme.of(context).primaryColor,
+        backgroundColor: Colors.indigo[600],
         title: const Text(
           "Groups",
           style: TextStyle(
@@ -83,13 +84,14 @@ class _HomePageState extends State<HomePage> {
         ),
       ),
       drawer: Drawer(
+        backgroundColor: Colors.indigo[600],
           child: ListView(
         padding: const EdgeInsets.symmetric(vertical: 50),
         children: <Widget>[
           Icon(
-            Icons.account_circle,
+            Icons.account_circle_rounded,
             size: 150,
-            color: Colors.grey[700],
+            color: Colors.white,
           ),
           const SizedBox(
             height: 15,
@@ -97,13 +99,18 @@ class _HomePageState extends State<HomePage> {
           Text(
             userName,
             textAlign: TextAlign.center,
-            style: const TextStyle(fontWeight: FontWeight.bold),
+            style: const TextStyle(fontWeight: FontWeight.bold,
+            fontSize: 20,
+              fontStyle: FontStyle.italic,
+              color: Colors.white,
+            ),
           ),
           const SizedBox(
             height: 30,
           ),
           const Divider(
             height: 2,
+            color: Colors.white,
           ),
           ListTile(
             onTap: () {},
@@ -111,14 +118,25 @@ class _HomePageState extends State<HomePage> {
             selected: true,
             contentPadding:
                 const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
-            leading: const Icon(Icons.group),
+            leading: const Icon(Icons.group,color: Colors.deepOrangeAccent),
             title: const Text(
               "Groups",
-              style: TextStyle(color: Colors.black),
+              style: TextStyle(color: Colors.white,
+              fontSize: 16,
+              fontWeight: FontWeight.bold,
+              ),
             ),
+          ),
+          const Divider(
+            height: 2,
+            color: Colors.white,
+          ),
+          SizedBox(
+            height: 15,
           ),
           ListTile(
             onTap: () {
+              selectedColor: Theme.of(context).primaryColor;
               nextScreenReplace(
                   context,
                   ProfilePage(
@@ -128,11 +146,21 @@ class _HomePageState extends State<HomePage> {
             },
             contentPadding:
                 const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
-            leading: const Icon(Icons.group),
+            leading: const Icon(Icons.group,color: Colors.deepOrangeAccent),
             title: const Text(
               "Profile",
-              style: TextStyle(color: Colors.black),
+              style: TextStyle(color: Colors.white,
+                fontSize: 16,
+                fontWeight: FontWeight.bold,
+              ),
             ),
+          ),
+          const Divider(
+            height: 2,
+            color: Colors.white,
+          ),
+          SizedBox(
+            height: 15,
           ),
           ListTile(
             onTap: () async {
@@ -141,8 +169,16 @@ class _HomePageState extends State<HomePage> {
                   context: context,
                   builder: (context) {
                     return AlertDialog(
-                      title: const Text("Logout"),
-                      content: const Text("Are you sure you want to logout?"),
+                      backgroundColor: Colors.indigo[400],
+                      title: const Text("Logout",style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 16,
+                        color: Colors.white,
+                      ),),
+                      content: const Text("Are you sure you want to logout?",style: TextStyle(
+                        fontSize: 15,
+                        color: Colors.white,
+                      ),),
                       actions: [
                         IconButton(
                           onPressed: () {
@@ -150,7 +186,7 @@ class _HomePageState extends State<HomePage> {
                           },
                           icon: const Icon(
                             Icons.cancel,
-                            color: Colors.red,
+                            color: Colors.deepOrangeAccent
                           ),
                         ),
                         IconButton(
@@ -163,21 +199,28 @@ class _HomePageState extends State<HomePage> {
                           },
                           icon: const Icon(
                             Icons.done,
-                            color: Colors.green,
+                            color: Colors.lightGreen,
                           ),
                         ),
                       ],
                     );
                   });
             },
+
             contentPadding:
                 const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
-            leading: const Icon(Icons.exit_to_app),
+            leading: const Icon(Icons.exit_to_app,color: Colors.deepOrangeAccent,),
             title: const Text(
               "Logout",
-              style: TextStyle(color: Colors.black),
+              style: TextStyle(color: Colors.white,
+              fontSize: 16,
+              fontWeight: FontWeight.bold),
             ),
-          )
+          ),
+          const Divider(
+            height: 2,
+            color: Colors.white,
+          ),
         ],
       )),
       body: groupList(),
@@ -186,7 +229,7 @@ class _HomePageState extends State<HomePage> {
           popUpDialog(context);
         },
         elevation: 0,
-        backgroundColor: Theme.of(context).primaryColor,
+        backgroundColor: Colors.indigo[400],
         child: const Icon(
           Icons.add,
           color: Colors.white,
@@ -203,8 +246,13 @@ class _HomePageState extends State<HomePage> {
         builder: (context) {
           return StatefulBuilder(builder: ((context, setState) {
             return AlertDialog(
+              backgroundColor: Colors.indigo[400],
               title: const Text(
                 "Create a group",
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white,
+                ),
                 textAlign: TextAlign.left,
               ),
               content: Column(
@@ -213,7 +261,7 @@ class _HomePageState extends State<HomePage> {
                   _isLoading == true
                       ? Center(
                           child: CircularProgressIndicator(
-                              color: Theme.of(context).primaryColor),
+                              color: Theme.of(context).primaryColorDark),
                         )
                       : TextField(
                           onChanged: (val) {
@@ -221,7 +269,7 @@ class _HomePageState extends State<HomePage> {
                               groupName = val;
                             });
                           },
-                          style: const TextStyle(color: Colors.black),
+                          style: const TextStyle(color: Colors.white),
                           decoration: InputDecoration(
                               enabledBorder: OutlineInputBorder(
                                   borderSide: BorderSide(
@@ -229,7 +277,7 @@ class _HomePageState extends State<HomePage> {
                                   borderRadius: BorderRadius.circular(20)),
                               errorBorder: OutlineInputBorder(
                                   borderSide:
-                                      const BorderSide(color: Colors.red),
+                                      const BorderSide(color: Colors.deepOrangeAccent),
                                   borderRadius: BorderRadius.circular(20)),
                               focusedBorder: OutlineInputBorder(
                                   borderSide: BorderSide(
@@ -244,8 +292,8 @@ class _HomePageState extends State<HomePage> {
                     Navigator.of(context).pop();
                   },
                   style: ElevatedButton.styleFrom(
-                      primary: Theme.of(context).primaryColor),
-                  child: const Text("CANCEL"),
+                      primary: Theme.of(context).hoverColor),
+                  child: const Text("CANCEL",style: TextStyle(fontWeight: FontWeight.bold),),
                 ),
                 ElevatedButton(
                   onPressed: () async {
@@ -262,12 +310,12 @@ class _HomePageState extends State<HomePage> {
                       });
                       Navigator.of(context).pop();
                       showSnackbar(
-                          context, Colors.green, "Group created successfully.");
+                          context, Colors.indigo[400], "Group created successfully.");
                     }
                   },
                   style: ElevatedButton.styleFrom(
-                      primary: Theme.of(context).primaryColor),
-                  child: const Text("CREATE"),
+                      primary: Theme.of(context).hoverColor),
+                  child: const Text("CREATE",style: TextStyle(fontWeight: FontWeight.bold),),
                 )
               ],
             );
@@ -322,7 +370,7 @@ class _HomePageState extends State<HomePage> {
             },
             child: Icon(
               Icons.add_circle,
-              color: Colors.grey[700],
+              color: Colors.white,
               size: 75,
             ),
           ),
@@ -330,7 +378,9 @@ class _HomePageState extends State<HomePage> {
             height: 20,
           ),
           const Text(
-            "You've not joined any groups, tap on the add icon to create a group or also search from top search button.",
+            "You've not joined any groups, tap on the add icon to create a group or also search from top search button.",style: TextStyle(
+            fontSize: 15,fontWeight: FontWeight.bold,color: Colors.white
+          ),
             textAlign: TextAlign.center,
           )
         ],

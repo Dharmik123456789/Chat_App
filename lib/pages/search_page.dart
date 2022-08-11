@@ -50,7 +50,7 @@ class _SearchPageState extends State<SearchPage> {
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
-        backgroundColor: Theme.of(context).primaryColor,
+        backgroundColor: Colors.indigo[600],
         title: const Text(
           "Search",
           style: TextStyle(
@@ -60,7 +60,7 @@ class _SearchPageState extends State<SearchPage> {
       body: Column(
         children: [
           Container(
-            color: Theme.of(context).primaryColor,
+            color: Colors.indigo[600],
             padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
             child: Row(
               children: [
@@ -158,15 +158,17 @@ class _SearchPageState extends State<SearchPage> {
       contentPadding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
       leading: CircleAvatar(
         radius: 30,
-        backgroundColor: Theme.of(context).primaryColor,
+        backgroundColor: Colors.indigo[400],
         child: Text(
           groupName.substring(0, 1).toUpperCase(),
-          style: const TextStyle(color: Colors.white),
+          style: const TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 18),
         ),
       ),
       title:
-          Text(groupName, style: const TextStyle(fontWeight: FontWeight.w600)),
-      subtitle: Text("Admin: ${getName(admin)}"),
+          Text(groupName, style: const TextStyle(fontWeight: FontWeight.bold,color: Colors.white,fontSize: 16)),
+      subtitle: Text("Admin: ${getName(admin)}",style: TextStyle(
+        color: Colors.white
+      ),),
       trailing: InkWell(
         onTap: () async {
           await DatabaseService(uid: user!.uid)
@@ -175,7 +177,7 @@ class _SearchPageState extends State<SearchPage> {
             setState(() {
               isJoined = !isJoined;
             });
-            showSnackbar(context, Colors.green, "Successfully joined he group");
+            showSnackbar(context, Colors.indigo[400], "Successfully joined he group");
             Future.delayed(const Duration(seconds: 2), () {
               nextScreen(
                   context,
@@ -187,7 +189,7 @@ class _SearchPageState extends State<SearchPage> {
           } else {
             setState(() {
               isJoined = !isJoined;
-              showSnackbar(context, Colors.red, "Left the group $groupName");
+              showSnackbar(context, Colors.indigo[300], "Left the group $groupName");
             });
           }
         },
@@ -195,14 +197,14 @@ class _SearchPageState extends State<SearchPage> {
             ? Container(
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10),
-                  color: Colors.black,
+                  color: Colors.indigo[400],
                   border: Border.all(color: Colors.white, width: 1),
                 ),
                 padding:
                     const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
                 child: const Text(
                   "Joined",
-                  style: TextStyle(color: Colors.white),
+                  style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold),
                 ),
               )
             : Container(
@@ -213,7 +215,7 @@ class _SearchPageState extends State<SearchPage> {
                 padding:
                     const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
                 child: const Text("Join Now",
-                    style: TextStyle(color: Colors.white)),
+                    style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold)),
               ),
       ),
     );

@@ -1,15 +1,17 @@
 import 'package:flutter/material.dart';
 
 const textInputDecoration = InputDecoration(
-  labelStyle: TextStyle(color: Colors.black, fontWeight: FontWeight.w300),
+  labelStyle: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
   focusedBorder: OutlineInputBorder(
-    borderSide: BorderSide(color: Color(0xFFee7b64), width: 2),
+    borderSide: BorderSide(color: Color(0xFF7986CB), width: 2),
   ),
   enabledBorder: OutlineInputBorder(
-    borderSide: BorderSide(color: Color(0xFFee7b64), width: 2),
+    borderSide: BorderSide(color: Color(0xFF7986CB), width: 2),
   ),
+    // 0xFFee7b64
+    // 0xFF5C6BC0
   errorBorder: OutlineInputBorder(
-    borderSide: BorderSide(color: Color(0xFFee7b64), width: 2),
+    borderSide: BorderSide(color: Color(0xFF7986CB), width: 2),
   ),
 );
 

@@ -28,7 +28,7 @@ class _LoginPageState extends State<LoginPage> {
       body: _isLoading
           ? Center(
               child: CircularProgressIndicator(
-                  color: Theme.of(context).primaryColor),
+                  color: Theme.of(context).primaryColorLight),
             )
           : SingleChildScrollView(
               child: Padding(
@@ -43,16 +43,27 @@ class _LoginPageState extends State<LoginPage> {
                         const Text(
                           "Groupie",
                           style: TextStyle(
-                              fontSize: 40, fontWeight: FontWeight.bold),
+                              fontSize: 40,
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold),
                         ),
                         const SizedBox(height: 10),
                         const Text("Login now to see what they are talking!",
                             style: TextStyle(
-                                fontSize: 15, fontWeight: FontWeight.w400)),
-                        Image.asset("assets/login.png"),
+                                fontSize: 15,
+                                color: Colors.white,
+                                fontWeight: FontWeight.w400)),
+                        Image.asset('assets/login.png'),
                         TextFormField(
+                          style: TextStyle(
+                            color: Colors.white,
+                          ),
                           decoration: textInputDecoration.copyWith(
-                              labelText: "Email",
+                              labelText: "E-mail",
+                              labelStyle: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                color: Colors.white,
+                              ),
                               prefixIcon: Icon(
                                 Icons.email,
                                 color: Theme.of(context).primaryColor,
@@ -74,9 +85,16 @@ class _LoginPageState extends State<LoginPage> {
                         ),
                         const SizedBox(height: 15),
                         TextFormField(
+                          style: TextStyle(
+                            color: Colors.white,
+                          ),
                           obscureText: true,
                           decoration: textInputDecoration.copyWith(
                               labelText: "Password",
+                              labelStyle: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                color: Colors.white,
+                              ),
                               prefixIcon: Icon(
                                 Icons.lock,
                                 color: Theme.of(context).primaryColor,
@@ -101,14 +119,16 @@ class _LoginPageState extends State<LoginPage> {
                           width: double.infinity,
                           child: ElevatedButton(
                             style: ElevatedButton.styleFrom(
-                                primary: Theme.of(context).primaryColor,
+                                primary: Colors.indigo[400],
                                 elevation: 0,
                                 shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(30))),
                             child: const Text(
                               "Sign In",
                               style:
-                                  TextStyle(color: Colors.white, fontSize: 16),
+                                  TextStyle(color: Colors.white,
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 16),
                             ),
                             onPressed: () {
                               login();
@@ -116,17 +136,18 @@ class _LoginPageState extends State<LoginPage> {
                           ),
                         ),
                         const SizedBox(
-                          height: 10,
+                          height: 15,
                         ),
                         Text.rich(TextSpan(
                           text: "Don't have an account? ",
                           style: const TextStyle(
-                              color: Colors.black, fontSize: 14),
+                              color: Colors.white, fontSize: 14),
                           children: <TextSpan>[
                             TextSpan(
                                 text: "Register here",
                                 style: const TextStyle(
-                                    color: Colors.black,
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold,
                                     decoration: TextDecoration.underline),
                                 recognizer: TapGestureRecognizer()
                                   ..onTap = () {
@@ -159,7 +180,7 @@ class _LoginPageState extends State<LoginPage> {
           await HelperFunctions.saveUserNameSF(snapshot.docs[0]['fullName']);
           nextScreenReplace(context, const HomePage());
         } else {
-          showSnackbar(context, Colors.red, value);
+          showSnackbar(context, Colors.white, value);
           setState(() {
             _isLoading = false;
           });

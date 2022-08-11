@@ -19,7 +19,6 @@ void main() async {
   } else {
     await Firebase.initializeApp();
   }
-
   runApp(const MyApp());
 }
 
@@ -54,9 +53,10 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
       theme: ThemeData(
           primaryColor: Constants().primaryColor,
-          scaffoldBackgroundColor: Colors.white),
+          scaffoldBackgroundColor: Colors.indigo[700]),
       debugShowCheckedModeBanner: false,
       home: _isSignedIn ? const HomePage() : const LoginPage(),
     );
   }
 }
+

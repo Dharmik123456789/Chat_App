@@ -6,4 +6,7 @@ class Constants {
   static String messagingSenderId = "634480644405";
   static String projectId = "chatappflutter-13318";
   final primaryColor = const Color(0xFFee7b64);
+  final primaryColor400 = const Color(0xFF5C6BC0);
+  final primaryColor300 = const Color(0xFF7986CB);
 }
+// 0xFFee7b64
